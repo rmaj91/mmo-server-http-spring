@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.LOGIN_VALIDATION_REGEXP;
+import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.USERNAME_VALIDATION_REGEXP;
 import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.PASSWORD_VALIDATION_REGEXP;
 
 @Getter
@@ -14,15 +14,15 @@ import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.PASSWORD_VALID
 public class AccountCreateRequest {
 
     @Size(min = 4, max = 20)
-    @Pattern(regexp = LOGIN_VALIDATION_REGEXP, message = "Login can contains only letters and digits.")
-    private String login;
+    @Pattern(regexp = USERNAME_VALIDATION_REGEXP, message = "Username can contains only letters and digits.")
+    private String username;
 
     @Size(min = 4, max = 20)
     @Pattern(regexp = PASSWORD_VALIDATION_REGEXP, message = "Password can contains only letters, digits and @$!%*?& characters.")
     private String password;
 
-    @JsonSetter("login")
-    public void setLogin(String login) {
-        this.login = login.toLowerCase();
+    @JsonSetter("username")
+    public void setUsername(String username) {
+        this.username = username.toLowerCase();
     }
 }

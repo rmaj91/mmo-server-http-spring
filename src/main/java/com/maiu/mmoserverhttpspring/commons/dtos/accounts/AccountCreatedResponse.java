@@ -10,5 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountCreatedResponse {
-    private String login;
+    private String username;
 }

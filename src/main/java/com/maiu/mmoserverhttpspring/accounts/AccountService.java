@@ -16,15 +16,15 @@ public class AccountService {
     private final AccountsRepository accountsRepository;
 
     public AccountCreatedResponse createAccount(AccountCreateRequest request) {
-        if (accountsRepository.existsByLogin(request.getLogin())) {
+        if (accountsRepository.existsByUsername(request.getUsername())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
 
         AccountEntity entity = new AccountEntity();
-        entity.setLogin(request.getLogin().toLowerCase());//todo remove if test json
+        entity.setUsername(request.getUsername().toLowerCase());//todo remove if test json
         entity.setPasswordHash(passwordEncoder.encode(request.getPassword()));
         AccountEntity saved = accountsRepository.save(entity);
 
-        return new AccountCreatedResponse(saved.getLogin());
+        return new AccountCreatedResponse(saved.getUsername());
     }
 }

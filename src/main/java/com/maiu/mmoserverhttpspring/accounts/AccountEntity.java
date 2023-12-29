@@ -19,8 +19,8 @@ public class AccountEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "LOGIN", nullable = false, updatable = false, unique = true)
-    private String login;
+    @Column(name = "USERNAME", nullable = false, updatable = false, unique = true)
+    private String username;
 
     @Column(name = "PASSWORD_HASH", nullable = false)
     private String passwordHash;
