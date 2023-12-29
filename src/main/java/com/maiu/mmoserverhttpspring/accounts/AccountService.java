@@ -19,7 +19,7 @@ public class AccountService {
 
     public AccountCreatedResponse createAccount(AccountCreateRequest request) {
         if (accountsRepository.existsByUsername(request.getUsername())) {
-            log.error("Account: '{}' already exists", request.getUsername());
+            log.error("Account: '{}' already exists.", request.getUsername());
             throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
 
@@ -27,7 +27,7 @@ public class AccountService {
         entity.setUsername(request.getUsername().toLowerCase());//todo remove if test json
         entity.setPasswordHash(passwordEncoder.encode(request.getPassword()));
         AccountEntity saved = accountsRepository.save(entity);
-        log.error("Account: '{}' successfully exists", request.getUsername());
+        log.error("Account: '{}' successfully created.", request.getUsername());
 
         return new AccountCreatedResponse(saved.getUsername());
     }
