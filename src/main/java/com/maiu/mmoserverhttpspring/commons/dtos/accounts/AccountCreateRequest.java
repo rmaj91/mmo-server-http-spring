@@ -14,7 +14,7 @@ import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.PASSWORD_VALID
 public class AccountCreateRequest {
 
     @Size(min = 4, max = 20)
-    @Pattern(regexp = USERNAME_VALIDATION_REGEXP, message = "Username can contains only letters and digits.")
+    @Pattern(regexp = USERNAME_VALIDATION_REGEXP, message = "Username can contain only letters and digits.")
     private String username;
 
     @Size(min = 4, max = 20)
