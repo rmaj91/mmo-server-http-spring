@@ -1,4 +1,4 @@
-package com.maiu.mmoserverhttpspring.characters;
+package com.maiu.mmoserverhttpspring.commons.dtos.characters;
 
 import lombok.Getter;
 import lombok.Setter;
