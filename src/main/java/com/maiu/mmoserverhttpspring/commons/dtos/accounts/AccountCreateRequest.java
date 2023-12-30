@@ -6,18 +6,17 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.USERNAME_VALIDATION_REGEXP;
-import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.PASSWORD_VALIDATION_REGEXP;
+import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.*;
 
 @Getter
 @Setter
 public class AccountCreateRequest {
 
-    @Size(min = 4, max = 20)
+    @Size(min = MIN_USERNAME_NAME_LENGTH, max = MAX_USERNAME_NAME_LENGTH)
     @Pattern(regexp = USERNAME_VALIDATION_REGEXP, message = "Username can contain only letters and digits.")
     private String username;
 
-    @Size(min = 4, max = 20)
+    @Size(min = MIN_PASSWORD_LENGTH, max = MAX_PASSWORD_LENGTH)
     @Pattern(regexp = PASSWORD_VALIDATION_REGEXP, message = "Password can contains only letters, digits and @$!%*?& characters.")
     private String password;
 
