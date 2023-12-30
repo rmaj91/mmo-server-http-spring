@@ -47,9 +47,18 @@ public class AuthService {
                     .build();
             log.info("Successfully authenticated user '{}'.", loginRequest.getUsername());
         } else {
-            log.error("Failed to authenticate username '{}'.", loginRequest.getUsername());
+            log.error("Failed to authenticate user '{}'.", loginRequest.getUsername());
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
         return response;
+    }
+
+    public void logout(UUID accountId) {
+        sessionRepository.deleteAllByAccountId(accountId);
+        accountsRepository.findById(accountId)
+                .map(AccountEntity::getUsername)
+                .ifPresentOrElse(
+                        username -> log.info("Successfully logout user '{}'.", username),
+                        () -> log.warn("Account '{}' not found.", accountId));
     }
 }
