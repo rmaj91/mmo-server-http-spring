@@ -43,7 +43,7 @@ public class AuthService {
 
             response = LoginResponse.builder()
                     .username(loginRequest.getUsername())
-                    .session(saved.getId().toString())
+                    .token(saved.getId().toString())
                     .build();
             log.info("Successfully authenticated user '{}'.", loginRequest.getUsername());
         } else {

@@ -9,5 +9,5 @@ import lombok.*;
 @Builder
 public class LoginResponse {
     private String username;
-    private String session;
+    private String token;
 }
