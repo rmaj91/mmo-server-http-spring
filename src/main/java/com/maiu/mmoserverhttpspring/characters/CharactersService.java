@@ -1,6 +1,8 @@
 package com.maiu.mmoserverhttpspring.characters;
 
+import com.maiu.mmoserverhttpspring.commons.dtos.Position;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterCreationRequest;
+import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterLoggingInInfoResponse;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterResponse;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharactersListResponse;
 import lombok.RequiredArgsConstructor;
@@ -46,5 +48,17 @@ public class CharactersService {
                 .id(saved.getId().toString())
                 .name(saved.getName())
                 .build();
+    }
+
+    public CharacterLoggingInInfoResponse getCharacterInfo(UUID accountId, UUID characterId) {
+        return charactersRepository.findByIdAndAccountId(characterId, accountId)
+                .map(entity -> CharacterLoggingInInfoResponse.builder()
+                        .id(entity.getId().toString())
+                        .name(entity.getName())
+                        .position(Position.builder().px(0).pz(0).build()) //todo vector etc... or single endpoint for position?? //default for now
+                        .zoneId("zoneId")
+                        .build()
+                )
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }

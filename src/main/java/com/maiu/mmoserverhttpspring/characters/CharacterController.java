@@ -1,9 +1,11 @@
 package com.maiu.mmoserverhttpspring.characters;
 
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterCreationRequest;
+import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterLoggingInInfoResponse;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterResponse;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharactersListResponse;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +35,11 @@ public class CharacterController {
         UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         CharacterResponse character = charactersService.createCharacter(accountId, request);
         return ResponseEntity.ok(character);
+    }
+
+    @GetMapping("/{characterId}/logging-in-info")
+    ResponseEntity<CharacterLoggingInInfoResponse> getCharacterInfo(@PathParam("characterId") String characterId) {
+        UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(charactersService.getCharacterInfo(accountId, UUID.fromString(characterId)));
     }
 }
