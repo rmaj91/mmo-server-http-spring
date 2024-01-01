@@ -5,7 +5,6 @@ import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterLoggingInIn
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharacterResponse;
 import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharactersListResponse;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +37,7 @@ public class CharacterController {
     }
 
     @GetMapping("/{characterId}/game-data")
-    ResponseEntity<CharacterLoggingInInfoResponse> getCharacterGameData(@PathParam("characterId") String characterId) {
+    ResponseEntity<CharacterLoggingInInfoResponse> getCharacterGameData(@PathVariable("characterId") String characterId) {
         UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(charactersService.getCharacterInfo(accountId, UUID.fromString(characterId)));
     }
