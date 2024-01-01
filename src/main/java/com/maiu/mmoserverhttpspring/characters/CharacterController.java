@@ -37,8 +37,8 @@ public class CharacterController {
         return ResponseEntity.ok(character);
     }
 
-    @GetMapping("/{characterId}/logging-in-info")
-    ResponseEntity<CharacterLoggingInInfoResponse> getCharacterInfo(@PathParam("characterId") String characterId) {
+    @GetMapping("/{characterId}/game-data")
+    ResponseEntity<CharacterLoggingInInfoResponse> getCharacterGameData(@PathParam("characterId") String characterId) {
         UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(charactersService.getCharacterInfo(accountId, UUID.fromString(characterId)));
     }
