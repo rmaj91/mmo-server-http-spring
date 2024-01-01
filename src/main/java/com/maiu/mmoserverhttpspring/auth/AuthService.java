@@ -21,7 +21,7 @@ import java.util.UUID;
 public class AuthService {
 
     private final AccountsRepository accountsRepository;
-    private final SessionRepository sessionRepository;
+    private final SessionRepository sessionRepository;//todo make it in memory???
     private final PasswordEncoder passwordEncoder;
 
     @Transactional
