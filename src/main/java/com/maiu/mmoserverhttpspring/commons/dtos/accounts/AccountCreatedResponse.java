@@ -10,5 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountCreatedResponse {
+    private String id;
     private String username;
 }

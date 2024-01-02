@@ -3,13 +3,15 @@ package com.maiu.mmoserverhttpspring.commons.dtos.accounts;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import static com.maiu.mmoserverhttpspring.commons.dtos.Constants.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AccountCreateRequest {
 
     @Size(min = MIN_USERNAME_NAME_LENGTH, max = MAX_USERNAME_NAME_LENGTH)

@@ -53,6 +53,25 @@ public class AuthService {
         return response;
     }
 
+    @Transactional
+    public LoginResponse authenticateUnsecure(String accountId) {
+        AccountEntity accountEntity = accountsRepository.findById(UUID.fromString(accountId))
+                .orElseThrow(() -> new RuntimeException("Account not exists. id: " + accountId));
+
+        sessionRepository.deleteAllByAccountId(accountEntity.getId());
+
+        SessionEntity sessionEntity = new SessionEntity();
+        sessionEntity.setAccountId(accountEntity.getId());
+        SessionEntity saved = sessionRepository.save(sessionEntity);
+
+        LoginResponse response = LoginResponse.builder()
+                .username(accountEntity.getUsername())
+                .token(saved.getId().toString())
+                .build();
+        log.info("Successfully authenticated user '{}'.", accountEntity.getUsername());
+        return response;
+    }
+
     public void logout(UUID accountId) {
         sessionRepository.deleteAllByAccountId(accountId);
         accountsRepository.findById(accountId)

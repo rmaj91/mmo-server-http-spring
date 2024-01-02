@@ -7,6 +7,7 @@ public interface Config {
     String HTTP_ACCOUNTS_RESOURCE = "/accounts";
     String HTTP_AUTH_RESOURCE = "/auth";
     String HTTP_AUTH_LOGIN_RESOURCE = "/login";
+    String HTTP_AUTH_LOGIN_AS_GUEST_RESOURCE = "/login-as-guest";
     String HTTP_AUTH_LOGOUT_RESOURCE = "/logout";
     String HTTP_CHARACTERS_RESOURCE = "/characters";
     String HTTP_ZONES_RESOURCE = "/zones";
