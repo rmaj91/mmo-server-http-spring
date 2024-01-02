@@ -12,4 +12,5 @@ public interface CharactersRepository extends JpaRepository<CharacterEntity, UUI
     List<CharacterEntity> findAllByAccountIdOrderByCreationDateAsc(UUID accountId);
 
     Optional<CharacterEntity> findByIdAndAccountId(UUID characterId, UUID accountId);
+    boolean existsByIdAndAccountId(UUID characterId, UUID accountId);
 }

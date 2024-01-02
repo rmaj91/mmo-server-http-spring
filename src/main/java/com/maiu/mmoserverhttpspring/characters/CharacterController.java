@@ -7,6 +7,7 @@ import com.maiu.mmoserverhttpspring.commons.dtos.characters.CharactersListRespon
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,12 @@ public class CharacterController {
     ResponseEntity<CharacterLoggingInInfoResponse> getCharacterGameData(@PathVariable("characterId") String characterId) {
         UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return ResponseEntity.ok(charactersService.getCharacterInfo(accountId, UUID.fromString(characterId)));
+    }
+
+    @GetMapping("/{characterId}/exists")
+    ResponseEntity<?> ifCharacterExists(@PathVariable("characterId") String characterId) {
+        UUID accountId = (UUID) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        boolean exists = charactersService.ifExists(accountId, UUID.fromString(characterId));
+        return exists ? ResponseEntity.ok().build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

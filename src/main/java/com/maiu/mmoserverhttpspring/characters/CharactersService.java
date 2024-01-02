@@ -61,4 +61,8 @@ public class CharactersService {
                 )
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    public boolean ifExists(UUID accountId, UUID characterId) {
+        return charactersRepository.existsByIdAndAccountId(characterId, accountId);
+    }
 }
