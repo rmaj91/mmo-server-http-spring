@@ -48,7 +48,7 @@ public class AuthorizationBearerTokenFilter extends OncePerRequestFilter {
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 accountId,
-                null,
+                token,
                 emptyList()
         );
 
