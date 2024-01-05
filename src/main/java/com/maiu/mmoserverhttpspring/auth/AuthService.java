@@ -44,6 +44,7 @@ public class AuthService {
             response = LoginResponse.builder()
                     .username(loginRequest.getUsername())
                     .token(saved.getId().toString())
+                    .isGuest(accountEntity.get().isGuestAccount())
                     .build();
             log.info("Successfully authenticated user '{}'.", loginRequest.getUsername());
         } else {
@@ -67,6 +68,7 @@ public class AuthService {
         LoginResponse response = LoginResponse.builder()
                 .username(accountEntity.getUsername())
                 .token(saved.getId().toString())
+                .isGuest(accountEntity.isGuestAccount())
                 .build();
         log.info("Successfully authenticated user '{}'.", accountEntity.getUsername());
         return response;

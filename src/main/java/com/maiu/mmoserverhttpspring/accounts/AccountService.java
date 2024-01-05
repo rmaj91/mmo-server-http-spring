@@ -42,6 +42,7 @@ public class AccountService {
 
         AccountEntity entity = new AccountEntity();
         entity.setUsername(username.toLowerCase());//todo remove if test json
+        entity.setGuestAccount(true);
 //        entity.setPasswordHash(passwordEncoder.encode(request.getPassword()));
         AccountEntity saved = accountsRepository.save(entity);
         log.error("Account: '{}' successfully created.", username);
