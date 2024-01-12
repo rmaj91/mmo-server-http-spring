@@ -18,6 +18,6 @@ public class ZoneController {
     @GetMapping("/{zoneId}")
     public ResponseEntity<Zone> getZone(@PathVariable("zoneId") String zoneId) {
         log.info("Getting zone by id: {}", zoneId);
-        return ResponseEntity.ok(Zone.builder().id(zoneId).name("BorkiSands").sizeX(15).sizeZ(10).build());
+        return ResponseEntity.ok(Zone.builder().id(zoneId).name("BorkiSands").sizeX(100).sizeZ(100).build());
     }
 }
