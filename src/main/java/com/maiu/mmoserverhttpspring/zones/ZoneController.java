@@ -76,10 +76,30 @@ public class ZoneController {
                                                 .lengthY(1)
                                                 .orientationAngle(0)
                                                 .collisions(true)
-                                                .build()
+                                                .build(),
+                                        buildTree("tree_1", "Tree1.glb", 17, 17, 0),
+                                        buildTree("tree_2", "Tree1.glb", 55, 17, 222),
+                                        buildTree("tree_3", "Tree4.glb", 22, 17, 22),
+                                        buildTree("tree_4", "Tree4.glb", 12, 77, 66),
+                                        buildTree("tree_4", "Tree4.glb", 1, 33, 66),
+                                        buildTree("tree_4", "Tree4.glb", 15, 44, 66),
+                                        buildTree("tree_4", "Tree4.glb", 37, 24, 66),
+                                        buildTree("tree_5", "Tree1.glb", 2, 18, 15)
                                 )
                         )
                         .build()
         );
+    }
+
+    private EnvironmentElement buildTree(String name, String modelName, double x, double z, int orientationAngle) {
+        return EnvironmentElement.builder()
+                .type("mesh")
+                .name(name)
+                .modelName(modelName)
+                .x(x)
+                .z(z)
+                .orientationAngle(orientationAngle)
+                .collisions(false)
+                .build();
     }
 }
