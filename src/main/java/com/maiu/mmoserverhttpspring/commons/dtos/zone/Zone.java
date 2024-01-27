@@ -2,6 +2,8 @@ package com.maiu.mmoserverhttpspring.commons.dtos.zone;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,6 +14,9 @@ public class Zone {
     private String name;
     private int sizeX;
     private int sizeZ;
+
+    private List<EnvironmentElement> environmentElements;
+
     //meshes list coordinates to Id
     // mesh regular mesh and collision box
     // every mesh should have version to cache and invalidate in browser
