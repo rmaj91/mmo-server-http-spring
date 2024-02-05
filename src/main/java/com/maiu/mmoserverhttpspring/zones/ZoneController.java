@@ -104,7 +104,7 @@ public class ZoneController {
         log.info("Getting zone by id: {}", zoneId);
         Zone zone = ZoneController.zone;
         zone.setId(zoneId);// ;D
-        addGrass(zone, 30);
+        addGrass(zone, 10);
         return ResponseEntity.ok(zone);
     }
 
@@ -259,7 +259,7 @@ public class ZoneController {
 
         return new Box(
                 Math.min(Math.min(rotated1.x, rotated2.x), Math.min(rotated3.x, rotated4.x)),
-                Math.max(Math.max(rotated1.z, rotated2.x), Math.max(rotated3.x, rotated4.x)),
+                Math.max(Math.max(rotated1.x, rotated2.x), Math.max(rotated3.x, rotated4.x)),
                 Math.min(Math.min(rotated1.z, rotated2.z), Math.min(rotated3.z, rotated4.z)),
                 Math.max(Math.max(rotated1.z, rotated2.z), Math.max(rotated3.z, rotated4.z))
         );
