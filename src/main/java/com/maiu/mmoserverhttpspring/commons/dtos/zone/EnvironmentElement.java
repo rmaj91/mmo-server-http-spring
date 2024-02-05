@@ -19,6 +19,8 @@ public class EnvironmentElement {
     public double lengthX;
     public double lengthZ;
     public double lengthY;
+    public double radius;
     public int orientationAngle;
     public boolean collisions;
+    public String collisionsType;
 }
