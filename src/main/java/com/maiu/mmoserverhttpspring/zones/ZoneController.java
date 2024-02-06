@@ -178,6 +178,8 @@ public class ZoneController {
                     Box box = calculateBoundingBoxRectangle(element.x, element.z, element.lengthX, element.lengthZ, element.orientationAngle);
                     builder.append(String.format("Rectangle Box: '%s', x1: %s, x2: %s, z1: %s, z2: %s", element.name, box.x1, box.x2, box.z1, box.z2));
                     builder.append("\n");
+                    builder.append(String.format("Rectangle    : x: %s, z: %s", element.x, element.z));
+                    builder.append("\n");
                     //calculate vertices
                     List<Point> vertices = calculateVerticesRectangle(element.x, element.z, element.lengthX, element.lengthZ, element.orientationAngle);
                     builder.append(String.format("Rectangle    : '%s', x1: %s, z1: %s, x2: %s, z2: %s, x3: %s, z3: %s, x4: %s, z4: %s",
