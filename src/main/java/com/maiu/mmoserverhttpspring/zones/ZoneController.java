@@ -283,11 +283,9 @@ public class ZoneController {
     }
 
     static Point rotatePoint(Point pivot, Point toRotate, int Angle) {
-        double radians = Angle * (Math.PI / 180);
+        double radians = -Angle * (Math.PI / 180);
         double cos = Math.cos(radians);
         double sin = Math.sin(radians);
-//        x:(cos * (point.x - pivot.x)) - (sin * (point.y - pivot.y)) + pivot.x
-//        y: (sin * (point.x - pivot.x)) + (cos * (point.y - pivot.y)) + pivot.y
         double newX = (cos * (toRotate.x - pivot.x)) - (sin * (toRotate.z - pivot.z)) + pivot.x;
         double nexZ = (sin * (toRotate.x - pivot.x)) + (cos * (toRotate.z - pivot.z)) + pivot.z;
         return new Point(newX, nexZ);
