@@ -104,7 +104,7 @@ public class ZoneController {
         log.info("Getting zone by id: {}", zoneId);
         Zone zone = ZoneController.zone;
         zone.setId(zoneId);// ;D
-        addGrass(zone, 10);
+//        addGrass(zone, 10);
         return ResponseEntity.ok(zone);
     }
 
