@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.maiu.mmoserverhttpspring.config.Config.HTTP_ZONES_PREFIX;
@@ -25,8 +24,8 @@ public class ZoneController {
     static Zone zone = Zone.builder()
             .id("zoneId")
             .name("BorkiSands")
-            .sizeX(100)
-            .sizeZ(100)
+            .sizeX(500)
+            .sizeZ(500)
             .environmentElements(new ArrayList<>(List.of(
                             EnvironmentElement.builder()
                                     .type("block")
