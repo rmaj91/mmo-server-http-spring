@@ -25,8 +25,8 @@ public class ZoneController {
     static Zone zone = Zone.builder()
             .id("zoneId")
             .name("BorkiSands")
-            .sizeX(100)
-            .sizeZ(100)
+            .sizeX(500)
+            .sizeZ(500)
             .environmentElements(new ArrayList<>(List.of(
                             EnvironmentElement.builder()
                                     .type("block")
